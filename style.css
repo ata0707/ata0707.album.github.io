@@ -1,0 +1,150 @@
+/* Gaya Dasar */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #333;
+    color: white;
+    margin-top: 30px;
+}
+
+/* Gaya Galeri Utama (Menggunakan CSS Grid) */
+.gallery-container {
+    display: grid;
+    /* Default: 1 kolom untuk layar kecil */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px; /* Jarak antar item */
+    padding: 20px;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+.gallery-item {
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+    cursor: pointer;
+    background-color: #fff;
+}
+
+.gallery-item img,
+.gallery-item video {
+    width: 100%;
+    height: 200px; /* Tinggi yang seragam untuk semua gambar/video */
+    object-fit: cover; /* Memastikan gambar/video menutupi area tanpa terdistorsi */
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img,
+.gallery-item:hover video {
+    transform: scale(1.05); /* Efek zoom saat hover */
+}
+
+/* Gaya Khusus Video */
+.gallery-item.video {
+    position: relative;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.gallery-item.video:hover .video-overlay {
+    opacity: 1;
+}
+
+
+/* --- Modal (Pop-up) --- */
+
+.modal {
+    display: none; /* Tersembunyi secara default */
+    position: fixed;
+    z-index: 100; /* Letakkan di atas segalanya */
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.9); /* Latar belakang hitam dengan sedikit transparansi */
+}
+
+.modal-content-wrapper {
+    margin: auto;
+    display: block;
+    width: 90%;
+    max-width: 700px;
+}
+
+.modal-content {
+    display: none; /* Sembunyikan konten awal */
+    margin: auto;
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+#caption {
+    margin: 15px auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+}
+
+/* Tombol Tutup */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Media Queries untuk Responsivitas Lebih Lanjut (Opsional) */
+@media only screen and (min-width: 768px) {
+    /* Untuk tablet dan desktop, gunakan 3 kolom */
+    .gallery-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}  
